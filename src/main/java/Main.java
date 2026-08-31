@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,6 +15,9 @@ public class Main extends Application {
   private Button sendButton;
   private Scene scene;
 
+  private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
+  private Image ramboImage = new Image(this.getClass().getResourceAsStream("/images/DaRambo.png"));
+
   @Override
   public void start(Stage stage) {
     scrollPane = new ScrollPane();
@@ -22,6 +26,9 @@ public class Main extends Application {
 
     userInput = new TextField();
     sendButton = new Button("Send");
+
+    DialogBox dialogBox = new DialogBox("Hello!", ramboImage);
+    dialogContainer.getChildren().addAll(dialogBox);
 
     AnchorPane mainLayout = new AnchorPane();
     mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
