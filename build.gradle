@@ -31,8 +31,10 @@ dependencies {
 }
 
 application {
-    mainClass.set("Rambo")
+   mainClass.set("Launcher")
 }
+
+// ...
 
 java {
     toolchain {
