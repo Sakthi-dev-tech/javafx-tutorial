@@ -11,19 +11,24 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Duke duke = new Duke();
+  private Duke duke = new Duke();
 
-    @Override
-    public void start(Stage stage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
-            AnchorPane ap = fxmlLoader.load();
-            Scene scene = new Scene(ap);
-            stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDuke(duke);  // inject the Duke instance
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  @Override
+  public void start(Stage stage) {
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
+      AnchorPane ap = fxmlLoader.load();
+      Scene scene = new Scene(ap);
+      scene.getStylesheets().addAll(
+          Main.class.getResource("/css/main.css").toExternalForm(),
+          Main.class.getResource("/css/dialog-box.css").toExternalForm());
+      stage.setScene(scene);
+      stage.setMinHeight(220);
+      stage.setMinWidth(417);
+      fxmlLoader.<MainWindow>getController().setDuke(duke); // inject the Duke instance
+      stage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+  }
 }

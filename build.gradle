@@ -28,6 +28,8 @@ dependencies {
     implementation("org.openjfx:javafx-graphics:${javaFxVersion}:win")
     implementation("org.openjfx:javafx-graphics:${javaFxVersion}:mac")
     implementation("org.openjfx:javafx-graphics:${javaFxVersion}:linux")
+
+    testImplementation('org.junit.jupiter:junit-jupiter:5.11.4')
 }
 
 application {
@@ -45,4 +47,8 @@ java {
 shadowJar {
     archiveBaseName = "rambo-gui"
     archiveClassifier = null
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
